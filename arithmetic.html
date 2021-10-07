@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <title>arithmetic webapp</title>
+
+    <h2>AJ Hagemann computes</h2>
+
+    <form>
+        <label for="form1_base">Enter a base</label>
+        <input type="number" id="form1_base" name="form1_base" value=10> <br>
+
+        <label for="form1_Ex">Enter an exponent </label>
+        <input type="number" id="form1_ex" name="form1_ex" autofocus> <br>
+
+        <input type="button" onclick="powers()" value="Compute">
+    </form>
+
+
+    <p id="result">This text will be replaced </p>
+
+    <script>
+        function powers() {
+            console.log("Getting form values")
+            base = document.getElementById("form1_base").value
+            Ex = document.getElementById("form1_ex").value
+            Result = ""
+            for (let i = 1; i <= Ex; i++) {
+                Result += base ** i;
+                Result += " "
+
+            }
+            confirmed = confirm("Powers of " + base + " are: " + Result + "(exponent was " + Ex + ")")
+
+        }
+    </script>
+
+</body>
+
+</html>
