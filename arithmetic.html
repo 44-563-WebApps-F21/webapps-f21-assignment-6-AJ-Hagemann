@@ -26,11 +26,72 @@
             Ex = document.getElementById("form1_ex").value
             Result = ""
             for (let i = 1; i <= Ex; i++) {
-                Result += base ** i;
+                Result += base ** i
                 Result += " "
 
             }
             confirmed = confirm("Powers of " + base + " are: " + Result + "(exponent was " + Ex + ")")
+            out = document.getElementById("result").innerText = ("Powers of " + base + " are: " + Result + "(exponent was " + Ex + ")")
+
+
+        }
+    </script>
+
+
+    <form>
+        <input type="radio" id="add" name="adding" value="plus" checked>
+        <label for="add">+</label></br>
+
+        <input type="radio" id="sub" name="adding" value="minus">
+        <label for="sub">-</label></br>
+
+        <input type="radio" id="mult" name="adding" value="times">
+        <label for="mult">*</label></br>
+
+        <input type="radio" id="div" name="adding" value="divide">
+        <label for="div">/</label></br>
+
+        <input type="button" onclick="processRadio()" value="Get values from radio group">
+    </form>
+
+    <p id="results">This will be our results</p>
+
+    <script>
+        function processRadio() {
+            console.log("Getting input")
+            addOpt = document.getElementById("add").checked
+            subOpt = document.getElementById("sub").checked
+            multOpt = document.getElementById("mult").checked
+            divOpt = document.getElementById("div").checked
+            base = parseInt(document.getElementById("form1_base").value)
+            Ex = parseInt(document.getElementById("form1_ex").value)
+            op = 0
+            sign = ""
+
+
+            if (addOpt) {
+                op = base + Ex
+                sign = " + "
+
+            } else if (subOpt) {
+                op = base - Ex
+                sign = " - "
+
+            } else if (multOpt) {
+                op = base * Ex
+                sign = " * "
+
+            } else if (divOpt) {
+                op = base / Ex
+                sign = " / "
+
+            }
+            confirmed = confirm("Equation: " + base + sign + Ex + " (Answer: " + op + ")")
+            out = document.getElementById("results").innerText = ("Answer: " + op)
+
+
+
+
 
         }
     </script>
