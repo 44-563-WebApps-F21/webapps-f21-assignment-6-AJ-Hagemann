@@ -2,9 +2,11 @@
 <html>
 
 <body>
+
     <title>THE Pass Page</title>
 
     <h2>Informtion Gathering page</h2>
+
 
     <form>
         <label for="form1_correct">Enter the secret phrase </label>
@@ -20,9 +22,11 @@
     <p id="result">This text will be replaced </p>
 
     <script>
+        wrongcount = 0
+        correctcount = 0
+
         function processPhase() {
-            wrongcount = 0
-            correctcount = 0
+
             console.log("Getting form values")
             correct = document.getElementById("form1_correct").value
             wrong = document.getElementById("form1_wrong").value
@@ -40,6 +44,35 @@
             } else {
                 out.innerHTML = "Access denied"
             }
+        }
+    </script>
+
+
+    <div class="flex-container">
+        <img src="https://github.com/44-563-WebApps-F21/webapps-f21-assignment-6-AJ-Hagemann/blob/main/National-Horse-Day-1-640x514.jpg?raw=1" alt="Horse" onclick="newImage()" width="200" height="200" id="source">
+    </div>
+
+    <script>
+        usingImage = 1;
+
+        function newImage() {
+            switch (usingImage) {
+                case 1:
+                    document.getElementById("source").src = "https://github.com/44-563-WebApps-F21/webapps-f21-assignment-6-AJ-Hagemann/blob/main/Goat-close-up.jpg?raw=1"
+                    usingImage = 2;
+
+                    break;
+                case 2:
+                    document.getElementById("source").src = "https://github.com/44-563-WebApps-F21/webapps-f21-assignment-6-AJ-Hagemann/blob/main/shutterstock_749507149-min.jpg?raw=1"
+                    usingImage = 3;
+                    break;
+                case 3:
+                    document.getElementById("source").src = "https://github.com/44-563-WebApps-F21/webapps-f21-assignment-6-AJ-Hagemann/blob/main/National-Horse-Day-1-640x514.jpg?raw=1"
+                    usingImage = 1;
+                    break;
+
+            }
+
         }
     </script>
 
