@@ -1,39 +1,72 @@
 <!DOCTYPE html>
 <html>
- 
+
 <body>
 
-<h2>Getting input</h2>
+    <title>Cars I wish I had</title>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <h2>AJ Hagemann orders a car</h2>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <form>
+        <input type="checkbox" id="cb1_cheese" name="topping1" value="electric" checked>
+        <label for="cb1_cheese">electric</label></br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
+        <input type="checkbox" id="cb1_olive" name="topping2" value="ac">
+        <label for="cb1_olive">AC</label></br>
+
+        <input type="checkbox" id="cb1_onion" name="topping3" value="gps" checked>
+        <label for="cb1_onion">GPS</label></br>
+
+        <input type="button" onclick="OrderCar()" value="Order a car">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
+    <script>
+        my_car = {};
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+        function OrderCar() {
+            my_car = {};
+            console.log("Getting input")
+            cheese = document.getElementById("cb1_cheese").checked
+            olives = document.getElementById("cb1_olive").checked
+            onions = document.getElementById("cb1_onion").checked
+            my_car['Electric'] = cheese
+            my_car['AC'] = olives
+            my_car['GPS'] = onions
+            confirmed = confirm("Electric " + cheese + " AC " + olives + " GPS " + onions)
+            out = document.getElementById("result").innerText = ("Electric " + cheese + " AC " + olives + " GPS " + onions)
 
+        }
+    </script>
+
+
+    <form>
+        <label for="form1_age">Enter a property</label>
+        <input type="type" id="form1_age" name="form1_age" value=color> <br>
+
+        <label for="form1_nick">Enter a value </label>
+        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+        <input type="button" onclick="updateCar()" value="Update the car">
+    </form>
+
+
+    <p id="results">This text will be replaced </p>
+
+    <script>
+        function updateCar() {
+            console.log("Getting form values")
+            age = document.getElementById("form1_age").value
+            nick = document.getElementById("form1_nick").value
+            my_car['Property'] = age
+            my_car['Value'] = nick
+
+            confirmed = confirm("Property: " + age + " Value: " + nick)
+            out = document.getElementById("results").innerText = (JSON.stringify(my_car))
+        }
+    </script>
 </body>
-</html> 
+
+</html>
